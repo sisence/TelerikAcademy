@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1
             strfmt.Alignment = StringAlignment.Center;
             strfmt.LineAlignment = StringAlignment.Center;
 
-            g.DrawString("Hello World!", Font, new SolidBrush(ForeColor), ClientSize.Width/2, ClientSize.Height/2, strfmt);
+            g.DrawString("Hello, world!", Font, new SolidBrush(ForeColor), ClientSize.Width/2, ClientSize.Height/2, strfmt);
         }
     }
 }
