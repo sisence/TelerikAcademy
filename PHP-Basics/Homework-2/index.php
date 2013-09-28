@@ -1,9 +1,32 @@
 <?php
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
 $pageTitle = 'Вход в системата';
-$user = array("username" => "user", "password" => "qwerty");
+
+function loginCheck($username, $password) {
+
+	$users[0]['username'] = 'user';
+	$users[0]['password'] = 'qwerty';
+	$users[0]['userDir'] = 'files/user-1';
+
+	$users[1]['username'] = 'user2';
+	$users[1]['password'] = 'pass2';
+	$users[1]['userDir'] = 'files/user-2';
+
+	$users[2]['username'] = 'user3';
+	$users[2]['password'] = 'pass3';
+	$users[2]['userDir'] = 'files/user-3';
+
+	for ($i = 0; $i < count($users); $i++) {
+		if (in_array($username, $users[$i]) && in_array($password, $users[$i])) {
+			$_SESSION['userDir'] = $users[$i]['userDir'];
+			return TRUE;
+		}
+	}
+}
+
+if (!isset($_SESSION['isLogged'])) {
+	$_SESSION['isLogged'] = FALSE;
+}
 
 if ($_SESSION['isLogged'] === TRUE) {
 	header("Location: files.php");
@@ -14,7 +37,7 @@ if ($_SESSION['isLogged'] === TRUE) {
 		$username = trim($_POST['username']);
 		$password = trim($_POST['password']);
 
-		if ($user['username'] == $username && $user['password'] == $password) {
+		if (loginCheck($username, $password) === TRUE) {
 			$_SESSION['isLogged'] = TRUE;
 			header("Location: files.php");
 			exit();
