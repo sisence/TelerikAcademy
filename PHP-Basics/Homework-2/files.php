@@ -1,9 +1,9 @@
 <?php
 session_start();
 $pageTitle = 'Това са вашите файлове';
-include 'includes/header.php';
+include 'includes'.DIRECTORY_SEPARATOR.'header.php';
 if ($_SESSION['isLogged'] === TRUE) {
-	include 'includes/menu.php';
+	include 'includes'.DIRECTORY_SEPARATOR.'menu.php';
 
 	$userDir = $_SESSION['userDir'];
 	$fileList = scandir($userDir);
@@ -23,7 +23,7 @@ if ($_SESSION['isLogged'] === TRUE) {
 	for ($i = 2; $i < count($fileList); $i++) {
 
 		$iFileName = $fileList[$i];
-		$iFilePath = $userDir . "/" . $iFileName;
+		$iFilePath = $userDir . DIRECTORY_SEPARATOR . $iFileName;
 		$iFileSize = round(filesize($iFilePath) / 1024, 2);
 		$iFileModifyDate = date("D d M Y g:i A", filemtime($iFilePath));
 
@@ -40,4 +40,4 @@ if ($_SESSION['isLogged'] === TRUE) {
 	header("Location: index.php");
 	exit();
 }
-include 'includes/footer.php';
+include 'includes'.DIRECTORY_SEPARATOR.'footer.php';

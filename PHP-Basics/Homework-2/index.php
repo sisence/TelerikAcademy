@@ -6,15 +6,15 @@ function loginCheck($username, $password) {
 
 	$users[0]['username'] = 'user';
 	$users[0]['password'] = 'qwerty';
-	$users[0]['userDir'] = 'files/user-1';
+	$users[0]['userDir'] = 'files' . DIRECTORY_SEPARATOR . 'user-1';
 
 	$users[1]['username'] = 'user2';
 	$users[1]['password'] = 'pass2';
-	$users[1]['userDir'] = 'files/user-2';
+	$users[1]['userDir'] = 'files' . DIRECTORY_SEPARATOR . 'user-2';
 
 	$users[2]['username'] = 'user3';
 	$users[2]['password'] = 'pass3';
-	$users[2]['userDir'] = 'files/user-3';
+	$users[2]['userDir'] = 'files' . DIRECTORY_SEPARATOR . 'user-3';
 
 	for ($i = 0; $i < count($users); $i++) {
 		if (in_array($username, $users[$i]) && in_array($password, $users[$i])) {
@@ -56,4 +56,4 @@ include 'includes/header.php';
 	<input type="submit" name="submit" value="Вход в системата"/>
 </form>
 <?php
-include 'includes/footer.php';
+include 'includes' . DIRECTORY_SEPARATOR . 'footer.php';

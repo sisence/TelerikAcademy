@@ -5,7 +5,7 @@ include 'header.php';
 if ($_SESSION['isLogged'] === TRUE) {
 	if ($_GET) {
 		if (!empty($_GET['fileForDelete'])) {
-			$fileForDelete = "../".$_GET['fileForDelete'];
+			$fileForDelete = ".." . DIRECTORY_SEPARATOR . $_GET['fileForDelete'];
 			unlink($fileForDelete);
 			header("Location: ../files.php");
 			exit();
